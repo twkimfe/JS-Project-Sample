@@ -1,16 +1,22 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
+import tailwindcssPostcss from "@tailwindcss/postcss";
+import autoprefixer from "autoprefixer";
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        index: 'index.html', // 기본 index.html
-        list: 'src/pages/todo/list.html', // 추가 HTML 파일
-        regist: 'src/pages/todo/regist.html', // 추가 HTML 파일
-        info: 'src/pages/todo/info.html', // 추가 HTML 파일
-        // 필요한 다른 HTML 파일을 여기에 추가
+        index: "index.html",
+        list: "src/pages/todo/list.html",
+        regist: "src/pages/todo/regist.html",
+        info: "src/pages/todo/info.html",
       },
     },
   },
-  appType: 'mpa', // fallback 사용안함
+  appType: "mpa",
+  css: {
+    postcss: {
+      plugins: [tailwindcssPostcss(), autoprefixer()],
+    },
+  },
 });
